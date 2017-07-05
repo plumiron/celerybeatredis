@@ -18,6 +18,9 @@ from celery import current_app
 from celery.utils.log import get_logger
 from redis.exceptions import LockError
 
+if not hasattr(sys, 'maxint'):
+  sys.maxint = float('inf')
+
 logger = get_logger(__name__)
 debug, linfo, error, warning = (logger.debug, logger.info, logger.error,
                                 logger.warning)
